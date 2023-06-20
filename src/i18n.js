@@ -12,7 +12,7 @@ const resources = {
       "Test 1": "แบบทดสอบที่ 1",
       "Layout & Style": "การจัดหน้าเว็บ",
       "Test 2": "แบบทดสอบที่ 2",
-      "Form & Table": "ซิงเกิลเพจ"
+      "Form & Table": "การจัดหน้าฟอร์ม",
     }
   },
   en: {
@@ -22,8 +22,7 @@ const resources = {
       "Test 1": "Test 1",
       "Layout & Style": "Layout & Style",
       "Test 2": "Test 2",
-      "Form & Table": "Form & Table"
-      
+      "Form & Table": "Form & Table",
     }
   }
 };
