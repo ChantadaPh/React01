@@ -3,6 +3,7 @@ import { Dropdown, Menu } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { Home } from './Home';
+import './styles.scss';
 import { Test1 } from './Test1';
 import { Test2 } from './Test2';
 

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import { Test1 } from './Test1';
 import { Test2 } from './Test2';
+import './styles.scss';
 
 export function Home() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export function Home() {
         <div className="center-container">
           <Row gutter={10} style={{ justifyContent: 'center' }}>
             <Col span={5}>
-              <Card title={t('Test 1')} bordered={false}>
+              <Card title={t('Test 1')} bordered={false} style={{ textAlign: 'center' }}>
                 <nav>
                   <NavLink end to="/Test1" className={({ isActive }) => isActive ? activeClassName : undefined}>
                     {t('Layout & Style')}
@@ -24,7 +25,7 @@ export function Home() {
               </Card>
             </Col>
             <Col span={5}>
-              <Card title={t('Test 2')} bordered={false}>
+              <Card title={t('Test 2')} bordered={false} style={{ textAlign: 'center' }}>
                 <nav>
                   <NavLink end to="/Test2" className={({ isActive }) => isActive ? activeClassName : undefined}>
                     {t('Form & Table')}
