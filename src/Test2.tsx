@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Form, Select, Input, DatePicker, Radio, Button, Table, Space } from 'antd';
 import Columns from './Columns'
 
-
 export const Test2 = () => {
     const { t } = useTranslation();
 
@@ -11,18 +10,10 @@ export const Test2 = () => {
 
     Columns.FORM.forEach(column => { column.title = t(column.title) });
 
-    const rowSelection = {
-        //     selectedRowKeys,
-        // onChange: onSelectChange,
-    };
-
-    const clearData = () => {
-
-    }
-
-    const addData = () => {
-        
-    }
+    const rowSelection = { };
+    const handleFormChange = (feild: string, value: string) => { }
+    const clearData = () => { }
+    const addData = () => { }
 
     return (
         <div style={{ display: 'block' }}>
@@ -36,18 +27,17 @@ export const Test2 = () => {
                 <div className='mainDiv' style={{ width: "800px", border: "1px solid", margin: "0px 10px 0px 10px", borderRadius: "8px" }}>
                     <Space className='space1' style={{ display: 'flex', margin: "10px 0px 0px 8px" }}>
                         <Form.Item label={t('Prefix')}>
-                            <Select style={{ width: '80px' }}>
+                            <Select style={{ width: '80px' }} onChange={(value) => handleFormChange('prefix', value)}>
                                 <Select.Option value={t('Mr')}>{t('Mr')}</Select.Option>
                                 <Select.Option value={t('Ms')}>{t('Ms')}</Select.Option>
                                 <Select.Option value={t('Miss')}>{t('Miss')}</Select.Option>
                             </Select>
                         </Form.Item>&nbsp;
                         <Form.Item label={t('Name')}>
-                            <Input />
+                            <Input onChange={(value) => handleFormChange('name', value.target.value)} />
                         </Form.Item>&nbsp;
-                        {/*  */}
                         <Form.Item label={t('Lastname')}>
-                            <Input />
+                            <Input onChange={(value) => handleFormChange('lastname', value.target.value)} />
                         </Form.Item>
                     </Space>
 

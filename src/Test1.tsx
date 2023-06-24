@@ -1,22 +1,38 @@
 import './styles.scss';
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next'; import { Button, Space, Card } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { Button, Space } from 'antd';
 
 export const Test1 = () => {
   const { t } = useTranslation();
 
+  const shapes = ['square', 'circle', 'oval', 'trapezoid', 'rectangle', 'parallelogram'];
   const [isSwapped, setIsSwapped] = useState(false);
+  const [currentShapes, setCurrentShapes] = useState(shapes);
 
   const handleMoveLeft = () => {
-    console.log("Move left")
+    const shiftedShapes = [...currentShapes.slice(1), currentShapes[0]];
+    setCurrentShapes(shiftedShapes);
   };
 
   const handleMoveRight = () => {
-    console.log("Move right")
+    const shiftedShapes = [currentShapes[currentShapes.length - 1], ...currentShapes.slice(0, currentShapes.length - 1)];
+    setCurrentShapes(shiftedShapes);
   };
 
   const handleChangePosition = () => {
     setIsSwapped(!isSwapped);
+    const swappedShapes = [...currentShapes.slice(3), ...currentShapes.slice(0, 3)];
+    setCurrentShapes(swappedShapes);
+  };
+
+  const handleShapeClick = () => {
+    const shuffledShapes = [...currentShapes];
+    for (let i = shuffledShapes.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledShapes[i], shuffledShapes[j]] = [shuffledShapes[j], shuffledShapes[i]];
+    }
+    setCurrentShapes(shuffledShapes);
   };
 
   const handleMainButtonClick = () => {
@@ -51,36 +67,24 @@ export const Test1 = () => {
             <span className='moveshape'> {t('Move shape')} </span>
           </Button>
         </Space>
-        {isSwapped ? (
-          <div style={{ display: "grid", justifyContent: 'center' }}>
-            <Space className='space' style={{ justifyContent: 'center' }}>
-              <Card className='card'><div className="trapezoid"></div></Card>
-              <Card className='card'><div className="rectangle"></div></Card>
-              <Card className='card'><div className="parallelogram"></div></Card>
-            </Space>
-
-            <Space className='space' style={{ justifyContent: 'center' }}>
-              <div style={{ display: 'flex', width: "200px", height: "100px", marginBottom: "10px" }}></div>
-              <Card className='card'><div className="square"></div></Card>
-              <Card className='card'><div className="circle"></div></Card>
-              <Card className='card'><div className="oval"></div></Card>
-            </Space>
-          </div>
-        ) : (
-          <div style={{ display: "grid", justifyContent: 'center' }}>
-            <Space className='space' style={{ justifyContent: 'center' }}>
-              <div style={{ display: 'flex', width: "200px", height: "100px", marginBottom: "10px" }}></div>
-              <Card className='card'><div className="square"></div></Card>
-              <Card className='card'><div className="circle"></div></Card>
-              <Card className='card'><div className="oval"></div></Card>
-            </Space>
-            <Space className='space' style={{ justifyContent: 'center' }}>
-              <Card className='card'><div className="trapezoid"></div></Card>
-              <Card className='card'><div className="rectangle"></div></Card>
-              <Card className='card'><div className="parallelogram"></div></Card>
-            </Space>
-          </div>
-        )}
+        <div style={{ display: "grid", justifyContent: 'center' }}>
+          <Space className="space" style={{ justifyContent: 'center' }}>
+            {!isSwapped ? <div style={{ display: 'flex', width: '200px', height: '100px', marginBottom: '10px' }}></div> : <div></div>}
+            {currentShapes.slice(0, 3).map((shape) => (
+              <Button key={shape} className="button2" onClick={handleShapeClick}>
+                <div className={shape}></div>
+              </Button>
+            ))}
+          </Space>
+          <Space className="space" style={{ justifyContent: 'center' }}>
+            {!isSwapped ? <div></div> : <div style={{ display: 'flex', width: '200px', height: '100px', marginBottom: '10px' }}></div>}
+            {currentShapes.slice(3).map((shape) => (
+              <Button key={shape} className="button2" onClick={handleShapeClick}>
+                <div className={shape}></div>
+              </Button>
+            ))}
+          </Space>
+        </div>
       </div>
     </div>
   )

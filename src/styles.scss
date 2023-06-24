@@ -20,13 +20,43 @@
   padding: 0px 10px 0px 10px;
 }
 
-.card {
+.button2 {
   width: 200px;
   height: 100px;
   margin-bottom: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff ;
+}
+
+.button2:hover {
+  background-color: #ffa200;
+}
+
+.button2:hover .square {
+  background-color: #ffffff;
+}
+
+.button2:hover .circle {
+  background-color: #ffffff;
+}
+
+.button2:hover .oval {
+  background-color: #ffffff;
+}
+
+.button2:hover .trapezoid {
+  border-bottom: 50px solid #ffffff;
+  background-color: #ffa200;
+}
+
+.button2:hover .rectangle {
+  background-color: #ffffff;
+}
+
+.button2:hover .parallelogram {
+  background-color: #ffffff;
 }
 
 .triangle-up {
